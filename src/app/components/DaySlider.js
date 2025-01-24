@@ -40,12 +40,12 @@ const DaySlider = ({ day }) => {
 
   const addRange = () => {
     const newId = ranges.length ? ranges[ranges.length - 1].id + 1 : 1;
-    setRanges([...ranges, { id: newId, value: [540, 1080] }]); // Default range: 9:00 AM - 6:00 PM
+    setRanges([...ranges, { id: newId, value: [540, 1080] }]); 
   };
 
   const deleteRange = (id) => {
     setRanges(ranges.filter((range) => range.id !== id));
-    if (ranges.length === 1) setIsOffline(true); // If last range is deleted
+    if (ranges.length === 1) setIsOffline(true); 
   };
 
   return (
@@ -58,7 +58,7 @@ const DaySlider = ({ day }) => {
               className="text-blue-500 underline cursor-pointer"
               onClick={() => addRange()}
             >
-              I'm offline (hover to add operating hours)
+              Offline (click here to add working hours)
             </span>
           </span>
         )}
@@ -78,9 +78,9 @@ const DaySlider = ({ day }) => {
           </div>
         ) : (
           <div>
-            {/* Single slider rail container */}
+           
             <div className="relative my-4">
-              {/* Time labels for all ranges */}
+              
               {ranges.map((range) => (
                 <React.Fragment key={range.id}>
                   <span className="absolute left-0 -top-6 text-sm text-gray-700">
@@ -88,11 +88,11 @@ const DaySlider = ({ day }) => {
                   </span>{"-"}
                   <span className="absolute right-0 -top-6 text-sm text-gray-700">
                     {formatTime(range.value[1])}
-                  </span>
+                  </span>{";"}
                 </React.Fragment>
               ))}
               
-              {/* Multiple sliders stacked on the same rail */}
+              
               <div className="relative">
                 {ranges.map((range, index) => (
                   <div
@@ -112,7 +112,7 @@ const DaySlider = ({ day }) => {
                 ))}
               </div>
 
-              {/* Delete buttons aligned below */}
+              
               <div className="flex justify-end mt-4 space-x-2">
                 {ranges.map((range) => (
                   <button
@@ -126,7 +126,7 @@ const DaySlider = ({ day }) => {
               </div>
             </div>
 
-            {/* Add Button */}
+            
             <button
               className="mt-4 text-green-500 flex items-center"
               onClick={addRange}
